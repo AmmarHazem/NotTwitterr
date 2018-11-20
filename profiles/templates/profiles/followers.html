@@ -1,0 +1,24 @@
+{% extends 'profiles/profile.html' %}
+{% block title %}
+    {{ profile.user.get_full_name|default:profile.user }} Followers
+{% endblock %}
+
+{% block time_line %}
+    <div class="col-8">
+        <div class="row">
+            {% if followers %}
+                {% for p in followers %}
+                    <div class="col-4 px-1 mt-2">
+                        {% include 'snippets/user_card.html' with user=p.user %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                {% if owner %}
+                    <h4 class="ml-3 mt-4 text-secondary">You still have no followers yet.</h4>
+                {% else %}
+                    <h4 class="ml-3 mt-4 text-secondary">this user still have no followers yet.</h4>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}
+    Search results for {{ q }}
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        {% if profiles %}
+            {% for p in profiles %}
+                <div class="col-3 mt-5">
+                    {% include 'snippets/user_card.html' with user=p.user %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <h3 class="col-12 text-center mt-5 display-4">Sorry, no results for <strong>{{ q }}</strong></h3> 
+        {% endif %}
+    </div>
+{% endblock %}

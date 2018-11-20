@@ -1,0 +1,53 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto">
+                    <li class="nav-item {% if active == 1 %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'home' %}"><i class="fas fa-home fa-fw fa-1x"></i>  Home</a>
+                    </li>
+                    <li class="nav-item {% if active == 2 %}active{% endif %}">
+                        <a class="nav-link" href="#"><i class="fas fa-bolt fa-fw"></i>  Moments</a>
+                    </li>
+                    <li class="nav-item {% if active == 3 %}active{% endif %}">
+                        <a class="nav-link" href="#"><i class="fas fa-bell fa-fw"></i>  Notifications</a>
+                    </li>
+                    <li class="nav-item {% if active == 4 %}active{% endif %}">
+                        <a class="nav-link" href="#"><i class="fas fa-envelope fa-fw"></i>  Messages</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                {% if request.user.is_authenticated %}
+                    <form method="GET" action="{% url 'search' %}">
+                        <div class="input-group">
+                            <input type="text" name="q" class="form-control form-control-sm" placeholder="Search NotTwitter" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-sm" type="submit"><i class="fas fa-search fa-fw"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="navAvatar">
+                                {% if request.user.profile.avatar %}
+                                    <img src="{{ request.user.profile.avatar.url }}" height="40px">
+                                {% else %}
+                                    <img src="{% static 'Images/default_avatar.png' %}" height="30px">
+                                {% endif %}
+                            </div>
+                        </a>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ request.user.profile.get_absolute_url }}">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </div>
+                    </li>
+                {% endif %}
+                </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,16 @@
+{% extends 'profiles/profile.html' %}
+{% block title %}{{ profile.user.get_full_name|default:profile.user }} Likes{% endblock %}
+{% block time_line %}
+    <div class="col-5 my-2 pb-3 timeLine">
+        <h3>likes</h3>
+        {% if likes %}
+            {% include 'snippets/tweet.html' with tweets=likes %}
+        {% else %}
+            {% if owner %}
+                <h4 class="text-secondary">You have not liked any tweets yet.</h4>
+            {% else %}
+                <h4 class="text-secondary">This user hasn't liked any tweets yet.</h4>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

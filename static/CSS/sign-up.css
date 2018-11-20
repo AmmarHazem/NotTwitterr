@@ -1,0 +1,59 @@
+body
+{
+    background-color: #e6ecf0;
+}
+
+/* start navbar */
+
+.navbar
+{
+    background-color: white;
+    border-bottom: 1px solid rgba(0,0,0,0.25);
+}
+
+.navbar .container
+{
+    max-width: 840px;
+}
+
+.navbar .container .nav-item .nav-link
+{
+    color: #78858e;
+}
+
+.navbar .container .navbar-brand
+{
+    color: #78858e;
+}
+
+.navbar .container .nav-item .nav-link:hover,
+.navbar .container .navbar-brand:hover
+{
+    color: #1da1f2;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon
+{
+    color: #78858e;
+}
+
+.navbar .container i
+{
+    color: #1da1f2;
+}
+
+/* end navbar */
+
+/* start content */
+
+.row > .col-6
+{
+    background-color: white;
+    border: 1px solid #ccc;
+}
+
+.row > .col-6 form
+{
+}
+
+/* end content */

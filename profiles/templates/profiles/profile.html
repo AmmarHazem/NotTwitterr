@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    {% if request.user.is_authenticated %}{{ request.user.get_short_name|default:request.user }} | {% endif %}NotTwitter
+{% endblock %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'CSS/home.css' %}">
+    <style>
+        body
+        {
+            background-color: #e6ecf0;
+        }
+    </style>
+{% endblock %}
+{% block navbar %}
+    {% include 'snippets/navbar.html' %}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <!-- start cover section -->
+        <div class="col-12 profileCover">
+            {% if profile.cover %}
+                <img src="{{ profile.cover.url }}" alt="{{ request.user.get_full_name |default:request.user }}'s cover ">
+            {% else %}
+                <img src="{% static 'Images/default_cover.png' %}">
+            {% endif %}
+        </div>
+        <!-- end cover section -->
+    </div>
+
+    <div class="row statusNavbar">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <div class="navbar-brand ml-5 col-3">
+                <div class="userAvatar">
+                    {% if profile.avatar %}
+                        <img src="{{ profile.avatar.url }}">
+                    {% else %}
+                        <img src="{% static 'Images/default_avatar.png' %}" class="defaultImage" style="height: 190px;">
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-5">
+                <ul class="navbar-nav">
+                    <li class="nav-item {% if status_navbar_active == 1 %}active{% endif %}">
+                        <a class="nav-link d-flex flex-column" href="{{ profile.get_absolute_url }}">
+                            Tweets
+                            <div>{{ profile.tweets_number }}</div>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if status_navbar_active == 2 %}active{% endif %}">
+                        <a class="nav-link d-flex flex-column" href="{% if owner %}{% url 'user-following' %}{% else %}{% url 'following' profile=profile %}{% endif %}">
+                            Following
+                            <div>{{ profile.following_count }}</div>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if status_navbar_active == 3 %}active{% endif %}">
+                        <a class="nav-link d-flex flex-column" href="{% if owner %}{% url 'user-followers' %}{% else %}{% url 'followers' profile=profile %}{% endif %}">
+                            Followers
+                            <div>{{ profile.followers_count }}</div>
+                        </a>
+                    </li>
+                    <li class="nav-item {% if status_navbar_active == 4 %}active{% endif %}">
+                        <a class="nav-link d-flex flex-column" href="{% if owner %}{% url 'user-likes' %}{% else %}{% url 'likes' profile=profile %}{% endif %}">
+                            Likes
+                            <div>{{ profile.likes_number }}</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                {% if profile == request.user.profile %}
+                <a href="{% url 'profiles:update' %}" class="offset-3 btn btn-outline-secondary">Edit Profile</a>
+                {% else %}
+                    {% if profile.user in request.user.profile.get_following %}
+                        <form method="POST" action="{% url 'unfollow' %}" class="following" data-slug="{{ profile.slug }}">
+                            {% csrf_token %}
+                            <button type="submit" class="offset-3 btn btn-primary">Following</button>
+                        </form>
+                    {% else %}
+                        <form method="POST" action="{% url 'follow' %}" class="follow" data-slug="{{ profile.slug }}">
+                            {% csrf_token %}
+                            <button class="offset-3 btn btn-outline-primary">Follow</button>
+                        </form>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+
+    <!-- user credentials and stuff -->
+    <div class="row">
+        <div class="col-lg-3 col-12 ml-5 mt-4 profileUserDetails">
+            <a href="{{ profile.get_absolute_url }}" class="h3 mt-2 fullName"><strong>{{ profile.user.get_full_name|default:profile.user }}</strong></a>
+
+            {% if profile.verified %}
+                <i class="fas fa-check-circle ml-1"></i>
+            {% endif %}
+
+            {% if profile.user.get_full_name %}<a href="{{ user.profile.get_absolute_url }}" class="handler"><p>@{{ profile.slug }}</p></a>{% endif %}
+
+            {% if profile.location %}<p class="mt-4 mb-2 bio"><i class="fas fa-map-marker-alt fa-fw"></i>{{ profile.location }}</p>{% endif %}
+
+            <p class="bio mb-2"><i class="fas fa-calendar-alt fa-fw"></i>Joined: {{ profile.created|date:'M Y' }}</p>
+
+            {% if profile.birth_date %}<p class="bio mb-2"><i class="fas fa-birthday-cake fa-fw"></i>Born on: {{ profile.birth_date }}</p>{% endif %}
+
+            {% if profile.bio %}<p class="bio mb-2">Bio: {{ profile.bio }}</p>{% endif %}
+            <p></p>
+        </div>
+    <!-- end user creadentials and stuff -->
+
+    <!-- the user's own tweets or other stuff -->
+        {% block time_line %}
+        <div class="col-5 my-2 pb-3 timeLine">
+            <h3>Tweets</h3>
+            {% if tweets %}
+                {% include 'snippets/tweet.html' with tweets=profile.get_tweets %}
+            {% else %}
+                {% if owner %}
+                    <h4 class="text-secondary">You have no tweets.</h4>
+                {% else %}
+                    <h4 class="text-secondary">This user hasn't tweeted yet.</h4>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endblock %}
+        <!-- end the user's own tweets or other stuff -->
+    </div>
+
+
+
+
+
+
+
+
+    <div class="row">
+        
+    </div>
+{% endblock %}

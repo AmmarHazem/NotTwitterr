@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'CSS/login-page.css' %}">
+{% endblock %}
+{% block title %}NotTwitter | Login {% endblock %}
+{% block navbar %}
+    <!-- start navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'home' %}">
+                        <i class="fab fa-twitter fa-fw mr-1"></i>Home
+                    </a>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end navbar -->
+{% endblock %}
+{% block content %}
+
+
+    <!-- start form -->
+    <div class="container">
+        <div class="row">
+            <div class="form d-flex flex-column mx-auto my-2 col-12 col-md-12 col-lg-8">
+                <h1>Login to NotTwitter</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    {% for f in form %}
+                        <div class="form-group">
+                            {% if f.errors %}{{ f.errors }}{% endif %}
+                            {{ f }}
+                        </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary mr-4">Login</button>
+                    <a href="#">Forgot password ?</a>
+                </form>
+                <div class="sign-up pt-3 mt-4">
+                    <p>New to NotTwitter <a href="{% url 'accounts:signup' %}">Sign up</a> now</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end form -->
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}NotTwitter | Edit your profile {% endblock %}
+{% block navbar %}
+    {% include 'snippets/navbar.html' %}
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-md-6 mx-auto">
+            <form method="POST" action="" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% include 'snippets/form.html' with form=form label='1' %}
+                <button class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

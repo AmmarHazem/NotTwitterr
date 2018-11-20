@@ -1,0 +1,72 @@
+<!-- start content section -->
+{% load static %}
+<div class="row">
+    <!-- start user profile card -->
+    <div class="col-lg-3 col-md-12 timelineCard my-2">
+        {% include 'snippets/timeline_card.html' with user=request.user %}
+    </div>
+    <!-- end user profile card -->
+
+
+    <!-- start timeline  -->
+    <div class="col-lg-6 col-md-12 my-2 pb-3 px-0 timeLine">
+        <div class="tweetForm pt-3 px-3 d-flex flex-row">
+            <div class="avatar mr-3">
+                {% if request.user.profile.avatar %}
+                    <img src="{{ request.user.profile.avatar.url }}" height="50px" width="100%">
+                {% else %}
+                    <img src="{% static 'Images/default_avatar.png' %}" height="40px" width="100%">
+                {% endif %}
+            </div>
+            <form method="POST" enctype="multipart/form-data" class="mb-3 form-inline" action="{% url 'tweet:create' %}">
+                {% if error %}
+                    <div class="form-group">
+                        {{ error }}
+                    </div>
+                {% endif %}
+                {% csrf_token %}
+                    {% include 'snippets/form.html' with form=tweet_form label='1' %}
+                <button class="btn btn-primary ml-auto"><strong>Tweet</strong></button>
+            </form>
+        </div>
+        {% if tweets %}
+            {% include 'snippets/tweet.html' with tweets=tweets %}
+        {% else %}
+            <h4 class="text-secondary my-3 ml-4">Follow someone to see their tweets.</h4>
+        {% endif %}
+    </div>
+    <!-- end timeline -->
+
+
+    <!-- start who to follow -->
+
+    <div class="col-lg-3 col-12 my-2">
+        <div class="whoToFollow d-flex flex-column px-3 py-4">
+            <h4>Who to follow</h4>
+            {% for p in who_to_follow %}
+                <div class="user py-2 d-flex flex-row">
+                    {% if p.avatar %}
+                        <div class="avatar">
+                            <a href="{{ p.get_absolute_url }}"><img src="{{ p.avatar.url }}" height="60px" width="100%"></a>
+                        </div>
+                    {% else %}
+                        <div class="avatar">
+                            <a href="{{ p.get_absolute_url }}"><img src="{% static 'Images/default_avatar.png' %}"  height="50px" width="100%"></a>
+                        </div>
+                    {% endif %}
+                    <div class="ml-3">
+                        <a href="{{ p.get_absolute_url }}" class="mb-1">{{ p.user.get_full_name|default:p.slug }}</a>
+                        {% if p.verified %}
+                            <i class="fas fa-check-circle mr-2"></i>
+                        {% endif %}
+                        <a href="{{ p.get_absolute_url }}" class="handler">@{{ p.slug }}</a>
+                        {% include 'snippets/follow_unfollow.html' with user=p.user %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- end who to follow -->
+</div>
+<!-- end content section -->

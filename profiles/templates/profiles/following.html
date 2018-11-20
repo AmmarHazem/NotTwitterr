@@ -1,0 +1,22 @@
+{% extends 'profiles/profile.html' %}
+{% block title %}{{ profile.user.get_full_name|default:profile.user }} Following{% endblock %}
+{% block time_line %}
+    <div class="col-8">
+        <div class="row">
+            {% if following %}
+                {% for user in following %}
+                    <div class="col-4 px-1 mt-2">
+                        {% include 'snippets/user_card.html' with user=user %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                
+                {% if owner %}
+                    <h4 class="mt-4 ml-3 text-secondary">You didn't follow anyone yet.</h4>
+                {% else %}
+                    <h4 class="ml-3 mt-4 text-secondary">this user didn't follow anyone yet.</h4>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

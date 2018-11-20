@@ -1,0 +1,13 @@
+{% if user in request.user.profile.get_following %}
+    <form method="POST" action="/unfollow/" class="following" data-slug="{{ user.username }}">
+        {% csrf_token %}
+        <button class="btn btn-primary following">Following</button>
+    </form>
+{% elif request.user == user %}
+    <a href="{% url 'profile' slug=request.user %}" class="btn btn-primary">Visit Profile</a>
+{% else %}
+    <form method="POST" action="/follow/" class="follow" data-slug="{{ user.username }}">
+        {% csrf_token %}
+        <button class="btn btn-outline-primary">Follow</button>
+    </form>
+{% endif %}

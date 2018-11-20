@@ -1,0 +1,7 @@
+{% for f in form %}
+    <div class="form-group">
+        {% if label %}{{ f.label_tag }}{% endif %}
+        {{ f }} 
+        {% if f.errors %}{{ f.errors }}{% endif %}
+    </div>
+{% endfor %}

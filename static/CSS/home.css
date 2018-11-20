@@ -1,0 +1,835 @@
+.left, .right
+{
+    min-height: 600px;
+}
+
+.left
+{
+    background-color: #1da1f2;
+    position: relative;
+}
+
+.left .back-i
+{
+    color: #1b95e0;
+}
+
+.left .icons .icon
+{
+    color: white;
+    text-align: center;
+}
+
+.left .icons .icon p
+{
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.right .logo i
+{
+    color: #1da1f2;
+}
+
+.right h1
+{
+    font-size: 27px;
+}
+
+.right h2
+{
+    font-size: 20px;
+}
+
+.home-footer
+{
+    border-top: 1px solid #e6ecf0;
+}
+
+.home-footer div > a
+{
+    color: #b6babd;
+    margin: 0px;
+    font-size: 13px;
+}
+
+/* media queries */
+@media (max-width: 768px)
+{
+    .home
+    {
+        display: -webkit-box!important;
+        display: -ms-flexbox!important;
+        display: flex!important;
+        -webkit-box-orient: vertical!important;
+        -webkit-box-direction: reverse!important;
+        -ms-flex-direction: column-reverse!important;
+        flex-direction: column-reverse!important;
+    }
+
+    .left, .right
+    {
+        min-height: 300px;
+        padding: 30px 0px;
+    }
+
+    .right > div
+    {
+        width: 80% !important;
+    }
+}
+
+/* end Home page */
+
+
+/* after login section */
+
+/* start navbar */
+
+.navbar
+{
+    background-color: white;
+    padding-top: 0.25rem;
+    padding-bottom: 0rem;
+    box-shadow: 0px 0px 3px 0px #2b2b2b;
+}
+
+@media (max-width: 991px)
+{
+    .navbar
+    {
+        padding-bottom: 4px;
+    }
+
+}
+
+.navbar .container .navbar-nav.mr-auto .nav-item,
+.navbar .container .navbar-nav.mr-auto .nav-item i
+{
+    border-bottom: 2px solid white;
+    transition: all 0.2s linear;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+
+
+.navbar .container .navbar-nav.mr-auto .nav-item:hover
+{
+    border-bottom: 2px solid #1da1f2;
+}
+
+.navbar .container .navbar-nav.mr-auto .nav-item.active,
+{
+    border-bottom: 2px solid #1da1f2 !important;
+}
+
+.nav-item.active
+{
+    border-bottom: 2px solid #1da1f2 !important;
+}
+
+.nav-item.active .nav-link,
+.nav-item.active .nav-link i
+{
+    color: #1da1f2 !important;
+}
+
+.navbar .container .navbar-nav.mr-auto .nav-item .nav-link
+{
+    color: #78858e;
+    font-weight: 600;
+    padding-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+}
+
+.navbar .container .nav-item .nav-link i
+{
+    color: #657786;
+}
+
+.navbar .container .navbar-nav.mr-auto .nav-item:hover .nav-link,
+.navbar .container .navbar-nav.mr-auto .nav-item:hover .nav-link i,
+.navbar .container .navbar-nav.mr-auto .nav-item:active .nav-link,
+.navbar .container .navbar-nav.mr-auto .nav-item:focus .nav-link
+{
+    color: #1da1f2;
+}
+
+.navbar .navbar-toggler .navbar-toggler-icon
+{
+    color: #78858e;
+}
+
+.navbar .container i
+{
+    color: #1da1f2;
+}
+
+.navbar .navbar-nav form
+{
+    background-color: #E8F4FB;
+    border-radius: 20px;
+    border: 1px solid #ced4da;
+}
+
+@media (max-width: 768px)
+{
+    .navbar .navbar-nav form
+    {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+.navbar .navbar-nav form:focus
+{
+    border: 1px solid #1da1f2;
+    background-color: white;
+}
+
+.navbar .navbar-nav form .form-control
+{
+    border: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding-left: 15px;
+    background-color: transparent;
+}
+
+.navbar .navbar-nav form .form-control:focus
+{
+    border: 1px solid #1da1f2;
+    background-color: white;
+}
+
+.navbar .navbar-nav .input-group > .form-control:focus,
+.navbar .navbar-nav .input-group > .form-control:focus .navbar .navbar-nav form
+{
+    border: 1px solid #1da1f2;
+    background-color: white;
+    box-shadow: none;
+}
+
+.navbar .navbar-nav form .input-group-append
+{
+    border-left: 0px;
+}
+
+.navbar .navbar-nav form button
+{
+    border: none;
+    background-color: transparent
+    
+}
+
+.navbar .navbar-nav form button i
+{
+    color: #78858e;
+}
+
+.btn-outline-secondary:not(:disabled):not(.disabled).active, .btn-outline-secondary:not(:disabled):not(.disabled):active, .show > .btn-outline-secondary.dropdown-toggle
+{
+    background-color: #E8F4FB;
+}
+
+.navbar .navAvatar
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #bbb;
+}
+
+@media (max-width: 768px)
+{
+    .navbar .navAvatar
+    {
+        margin-bottom: 5px;
+    }
+}
+
+.dropdown-toggle::after
+{
+    display: none;
+}
+
+.dropdown-toggle
+{
+    padding: 0px 8px;
+}
+
+.dropdown-menu
+{
+    top: 130%;
+    left: -100px;
+}
+
+.dropdown-item:focus, .dropdown-item:hover
+{
+    background-color: #1da1f2;
+    color: white;
+}
+
+/* end navbar */
+
+/* container */
+
+@media (min-width: 1200px)
+{
+    .container
+    {
+        max-width: 1210px;
+    }
+}
+
+/* end container */
+
+/* timeline card */
+
+@media (max-width: 1000px)
+{
+    .timelineCard
+    {
+        padding: 0px;
+    }
+}
+
+.card
+{
+    position: relative;
+    border-radius: 0px;
+}
+
+.card form
+{
+    display: inline-block;
+}
+
+.card > img
+{
+    max-height: 95px;
+    border-radius: 0px;
+}
+
+.card .avatar
+{
+    position: absolute;
+    width: 72px;
+    height: 72px;
+    border: 3px solid white;
+    border-radius: 50%;
+    overflow: hidden;
+    top: 60px;
+    left: 10px;
+}
+
+.card .card-body
+{
+    padding: 0px 25px 5px;
+}
+
+.card .card-body .card-title
+{
+    padding-left: 58px;
+    margin-bottom: 0px;
+}
+
+.card .card-body .card-title a
+{
+    color: black;
+}
+
+.card .card-body .card-title .handler
+{
+    color: #657786;
+}
+
+.card .card-body .card-title .btn-primary
+{
+    color: white;
+}
+
+.card .card-body .card-text a
+{
+    color: #657786;
+    font-size: 13px;
+    text-align: center;
+}
+
+.card .card-body .card-text a:hover
+{
+    text-decoration: none;
+    color: #1da1f2;
+}
+
+.card .card-body .card-text .col-4 div
+{
+    color: #1da1f2;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* end timeline card */
+
+/* start tweet form */
+
+.tweetForm
+{
+    background-color: #e8f4fb;
+}
+
+.tweetForm .avatar
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.tweetForm form
+{
+    width: 100%;
+}
+
+.tweetForm form .form-group:first-of-type
+{
+    width: 100%;
+}
+
+.tweetForm form textarea
+{
+    border: 2px solid #a3d4f2;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: 100% !important;
+}
+
+@media (max-width: 768px)
+{
+    .tweetForm .btn
+    {
+        display: block;
+        margin-top: -15px;
+    }
+
+    .tweetForm .avatar
+    {
+        display: none;
+    }
+}
+
+/* end tweet form */
+
+.row > form .form-group
+{
+    margin-bottom: 5px;
+}
+
+.col-3.mt-4.pl-5
+{
+    font-size: 20px;
+}
+
+
+/* start timeline */
+
+.timeLine
+{
+    background-color: white;
+}
+
+.timeLine .fa-check-circle
+{
+    font-size: 0.8rem;
+}
+
+.timeLine .h3,
+.timeLine h3
+{
+    font-weight: 610;
+    margin-top: .5rem;
+    font-size: 20px;
+}
+
+.timeLine .tweets .tweet
+{
+    border-top: 1px solid #e6eaec;
+}
+
+.timeLine .tweets .tweet > .col-2
+{
+    padding-right: 0px;
+}
+
+.timeLine .tweets .tweet > .col
+{
+    padding-left: 0px;
+}
+
+.timeLine .tweets .tweet .avatar
+{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.timeLine .tweets .tweet p
+{
+    margin: 0px;
+}
+
+.timeLine .tweets .tweet .userAndTweet a
+{
+    color: black;
+}
+
+.timeLine .tweets .tweet .userAndTweet
+{
+    margin-bottom: 20px;
+}
+
+.timeLine .tweets .tweet .userAndTweet .handler
+{
+    color: #657786;
+}
+
+.timeLine .tweets .tweet .userAndTweet .handler + span
+{
+    color: #657786;
+    font-size: 13px;
+}
+
+.timeLine .tweets .tweet .userAndTweet > img
+{
+    border-radius: 5px;
+}
+
+.timeLine .tweets .tweet .user i
+{
+    margin-top: 11px;
+}
+
+.timeLine .tweets .tweet a:hover:first-of-type
+{
+    color: #1da1f2;
+}
+
+.timeLine .tweets .tweet .handler
+{
+    color: #78858e;
+    font-weight: 300;
+}
+
+.timeLine .tweets .tweet .handler:hover
+{
+    text-decoration: none;
+}
+
+.timeLine .tweets .tweet .actions
+{
+    font-size: 14px;
+}
+
+.timeLine .tweets .tweet .actions a
+{
+    color: #78858e;
+}
+
+.timeLine .tweets .tweet .actions .fa-comments:hover
+{
+    color: #1da1f2;
+}
+
+.timeLine .tweets .tweet .actions .fa-retweet:hover
+{
+    color: rgb(18, 150, 18);
+}
+
+.timeLine .tweets .tweet .actions .fa-heart:hover
+{
+    color: rgb(255, 82, 82);
+}
+
+.timeLine .tweets .tweet .actions .likeForm .btn
+{
+    color: #78858e;
+}
+
+.timeLine .tweets .tweet .actions .likeForm .btn:hover
+{
+    color: rgb(255, 82, 82);
+}
+
+.timeLine .tweets .tweet .actions .likeForm .btn-link:hover
+{
+    text-decoration: none;
+}
+
+.timeLine .tweets .tweet .actions .likeForm .liked
+{
+    color: rgb(255, 82, 82);
+}
+
+@media (max-width: 768px)
+{
+    .timeLine .tweets .tweet .avatar
+    {
+        margin-bottom: 10px;
+    }
+
+    .timeLine .tweets .tweet .userAndTweet > img
+    {
+        width: 250px !important;
+    }
+}
+
+/* end timeline */
+
+
+/* start how to follow */
+
+.whoToFollow
+{
+    background-color: white;
+}
+
+.whoToFollow h4
+{
+    font-weight: 620;
+    font-size: 19px;
+}
+
+.whoToFollow .user
+{
+    border-bottom: 1px solid #e9e9e9;
+}
+
+.whoToFollow .user .avatar
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1px solid #bbb;
+    display: inline-block;
+}
+
+.whoToFollow .user a
+{
+    color: black;
+    font-weight: 610;
+}
+
+.whoToFollow .user a:hover
+{
+    color: #1da1f2;
+}
+
+.whoToFollow .user a.handler
+{
+    color: #878b8f;
+    font-weight: 310;
+}
+
+.whoToFollow .user a.handler:hover
+{
+    text-decoration: none;
+}
+
+@media (max-width: 768px)
+{
+    .col-lg-3:last-of-type
+    {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+/* end how to follow */
+
+
+/* start profile */
+
+.profileCover
+{
+    padding: 0px;
+    max-height: 340px;
+    overflow: hidden;
+}
+
+.profileCover img
+{
+    width: 100%;
+}
+
+.userStatus
+{
+    background-color: white;
+    box-shadow: 0px 0px 3px 0px #2b2b2b;
+    position: relative;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    min-height: 60px;
+}
+
+.statusNavbar nav
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.statusNavbar nav .col-3
+{
+    margin-right: 0px;
+}
+
+.statusNavbar nav .col-5
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.userStatus .userAvatar,
+.statusNavbar .userAvatar
+{
+    height: 200px;
+    width: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 5px solid white;
+    position: absolute;
+    top: -140px;
+    left: 30px;
+    text-align: center;
+}
+
+.userStatus .userAvatar img,
+.statusNavbar .userAvatar img
+{
+    height: 290px;
+}
+
+.statusNavbar
+{
+    display: block;
+}
+
+.statusNavbar nav
+{
+    padding-top: 0px;
+}
+
+.statusNavbar nav .col-4
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.statusNavbar nav .navbar-nav .nav-item
+{
+    margin: 0px 10px;
+    font-weight: 510;
+    font-size: 16px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 2px solid white;
+    text-align: center;
+    margin-left: 0px;
+    margin-right: 0px;
+    transition: 0.2s all linear;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+
+.statusNavbar nav .navbar-nav .nav-item:hover
+{
+    border-bottom: 2px solid #1da1f2;
+}
+
+.statusNavbar nav .navbar-nav .nav-item .nav-link
+{
+    padding: 0px 0px;
+    transition: 0.2s all linear;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover
+{
+    color: #1da1f2;
+}
+
+.statusNavbar nav .navbar-nav .nav-item .nav-link div
+{
+    color: #1da1f2;
+}
+
+@media (max-width: 991px)
+{
+    .statusNavbar
+    {
+        display: none;
+    }
+}
+
+/* end statusNavbar */
+
+
+/* start profileUserDetails */
+
+
+.profileUserDetails
+{
+    
+}
+
+.profileUserDetails .avatar
+{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid white;
+    overflow: hidden;
+}
+
+.profileUserDetails .avatar img
+{
+    height: 110px;
+}
+
+
+/* end profileUserDetails */
+
+.col-3 .fullName:hover
+{
+    text-decoration: underline;
+    color: black;
+}
+
+.col-3 .handler
+{
+    color: #657786;
+    font-size: 15px;
+}
+
+.col-3 .bio
+{
+    color: #657786;
+    font-size: 14px;
+}
+
+/* end profile */
+
+
+/* end after login section */

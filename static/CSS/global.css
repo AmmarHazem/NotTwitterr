@@ -1,0 +1,130 @@
+body{
+    overflow-x: hidden;
+}
+
+.btn
+{
+    border-radius: 20px;
+}
+
+.btn-outline-primary
+{
+    background-color: white;
+}
+
+.btn.btn-outline-primary,
+.btn.btn-primary
+{
+    border-color: #1da1f2;
+}
+
+.btn.btn-primary
+{
+    background-color: #1da1f2;
+}
+
+.btn.btn-primary:hover
+{
+    background-color: #0062cc;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle
+{
+    background-color: #E8F4FB;
+    color: #1da1f2;
+    border-color: #1da1f2;
+}
+
+.btn-outline-primary:focus,
+.btn-primary.focus, .btn-primary:focus
+{
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px rgba(27,149,224,0.4);
+}
+
+.fa-check-circle
+{
+    color: #1da1f2;
+}
+
+.errorlist
+{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    background-color: #f8d7da;
+    border-radius: 3px;
+    margin: 5px 0px;
+    display: flex;
+}
+
+.errorlist li
+{
+    border-radius: 3px;
+    padding: 2px 7px;;
+    text-align: center;
+}
+
+
+/* container */
+
+@media (max-width: 768px)
+{
+    .container
+    {
+        width: 100%;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+
+/* end container */
+
+/* start file input  */
+
+.inputfile
+{
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+[for="id_avatar"],
+[for="id_cover"],
+[for="id_image"]
+{
+    font-size: 1.25em;
+    font-weight: 700;
+    color: #1da1f2;
+    border: 2px solid #1da1f2;
+    background-color: #e8f4fb;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 1px 4px;
+    transition: 0.2s all linear;
+    transition: 0.2s all linear;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+}
+
+[for="id_avatar"]:hover,
+[for="id_cover"]:hover,
+[for="id_image"]:hover,
+[for="id_avatar"]:focus,
+[for="id_cover"]:focus,
+[for="id_image"]:focus,
+[for="id_avatar"]:active,
+[for="id_cover"]:active,
+[for="id_image"]:active
+{
+    background-color: white;
+}
+
+/* end file input */

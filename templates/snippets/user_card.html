@@ -1,0 +1,52 @@
+{% load static %}
+<div class="card">
+        {% if user.profile.cover %}
+            <img src="{{ user.profile.cover.url }}" class="card-img-top">
+        {% else %}
+            <img src="{% static 'Images/default_cover.png' %}" class="card-img-top">
+        {% endif %}
+        {% if user.profile.avatar %}
+            <div class="avatar">
+                <a href="{{ user.profile.get_absolute_url }}"><img src="{{ user.profile.avatar.url }}" height="90px" width="100%"></a>
+            </div>
+        {% else %}
+            <div class="avatar">
+                <a href="{{ user.profile.get_absolute_url }}"><img src="{% static 'Images/default_avatar.png' %}"  height="70px" width="100%"></a>
+            </div>
+        {% endif %}
+        <div class="card-body">
+            <div class="card-title">
+                <a href="{{ user.profile.get_absolute_url }}"><strong>{{ user.get_full_name|default:user }}</strong></a>
+                {% if user.profile.verified %}
+                    <i class="fas fa-check-circle"></i>
+                {% endif %}
+                <br>
+                <a href="{{ user.profile.get_absolute_url }}" class="handler">@{{ user }}</a>
+                {% include 'snippets/follow_unfollow.html' with user=user %}
+            </div>
+            <div class="card-text row px-2">
+                <div class="col-4 p-0 d-flex flex-column">
+                    <a href="{{ user.profile.get_absolute_url }}" class="m-1 tweets">
+                        <strong>Tweets</strong>
+                        <div>{{ user.profile.tweets_number }}</div>
+                    </a>
+                    
+                </div>
+                <div class="col-4 p-0 d-flex flex-column">
+                    <a href="{% if request.user == user %}{% url 'user-following' %}{% else %}{% url 'following' profile=user.profile %}{% endif %}" class="m-1">
+                        <strong>Following</strong>
+                        <div>{{ user.profile.following_count }}</div>
+                    </a>
+                    
+                </div>
+                <div class="col-4 p-0 d-flex flex-column">
+                    <a href="{% if request.user == user %}{% url 'user-followers' %}{% else %}{% url 'followers' profile=user.profile %}{% endif %}" class="m-1">
+                        <strong>Followers</strong>
+                        <div>
+                            {{ user.profile.followers_count }}
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>

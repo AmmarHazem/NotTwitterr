@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}NotTwitter | Sign Up{% endblock %}
+{% block style %}<link rel="stylesheet" href="{% static 'CSS/sign-up.css' %}">{% endblock %}
+{% block content %}
+    <!-- start navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}"><span><i class="fab fa-twitter fa-fw"></i></span></a>
+            <button class="navbar-toggler navbar-light bg-light" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- end navbar -->
+    <div class="row">
+        <div class="col-6 py-4 my-4 mx-auto d-flex justify-content-center">
+            <form method="POST">
+                {% csrf_token %}
+                {% include 'snippets/form.html' with form=form %}
+                <button type="submit" class="btn btn-outline-primary">Sign Up</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

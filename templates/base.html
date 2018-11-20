@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% if request.user.is_authenticated %}{{ request.user.get_short_name|default:request.user }} | NotTwitter{% else %}NotTwitter. See what's happening{% endif %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/font-awsome-5/css/fontawesome-all.min.css' %}">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway"> -->
+    <link rel="stylesheet" href="{% static 'CSS/global.css' %}">
+
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'Images/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'Images/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'Images/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'Images/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'Images/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'Images/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'Images/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'Images/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'Images/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'Images/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'Images/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'Images/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'Images/favicon-16x16.png' %}">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+
+    {% block style %}
+    <link rel="stylesheet" href="{% static 'CSS/home.css' %}">
+        {% if user.is_authenticated %}
+        <style>
+            body
+            {
+                background-color: #e6ecf0;
+            }
+        </style>
+
+        {% else %}
+        <link rel="stylesheet" href="{% static 'CSS/login-page.css' %}">
+        <style>
+            .container-fluid
+            {
+                background-color: white;
+            }
+        </style>
+        {% endif %}
+    {% endblock %}
+</head>
+<body>
+{% block navbar %}
+    {% if user.is_authenticated %}
+    <!-- start navbar -->
+        {% include 'snippets/navbar.html' with active=1 %}
+    <!-- end navbar -->
+    {% endif %}
+{% endblock %}
+
+
+    <div class="container-fluid">
+        {% include 'snippets/messages.html' %}
+        {% block content %}
+        {% if not request.user.is_authenticated %}
+            <div class="home row">
+                <section class="col-md-6 col-xs-12 left d-flex">
+                    <div class="icons mx-auto w-75 align-self-center">
+                        <i class="fab fa-twitter fa-fw fa-5x back-i"></i>
+                        <div class="icon my-4 d-flex align-items-center">
+                            <i class="fas fa-search fa-fw fa-2x"></i>
+                            <p class="ml-3">Follow your interests.</p>
+                        </div>
+                        <div class="icon my-4 d-flex align-items-center">
+                            <i class="fas fa-users fa-fw fa-2x"></i>
+                            <p class="ml-3">Hear what people are talking about.</p>
+                        </div>
+                        <div class="icon my-4 d-flex align-items-center">
+                            <i class="fas fa-comments fa-fw fa-2x"></i>
+                            <p class="ml-3">Join the conversation.</p>
+                        </div>
+                    </div>
+                </section>
+                <section class="col-md-6 col-xs-12 right d-flex align-items-center">
+                    <div class="d-flex flex-column mx-auto w-50">
+                        <div class="row logo w-100">
+                            <div class="col-6 d-flex justify-content-start"><i class="fab fa-twitter fa-fw fa-3x"></i></div>
+                            <div class="col-6 d-flex justify-content-end"><a href="{% url 'accounts:login' %}" class="btn btn-outline-primary d-flex align-items-center btn-sm">Login</a></div>
+                        </div>
+                        <h1 class="my-3">See what's happening in the world right now</h1>
+                        <div class="join-us mt-4">
+                            <h2>Join NotTwitter today</h2>
+                            <a href="{% url 'accounts:signup' %}" class="btn btn-primary btn-block">Signup</a>
+                            <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary btn-block">Login</a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        {% else %}
+            <div class="container">
+                {% include 'timeline.html' %}
+            </div>
+        {% endif %}
+        <footer class="col-12 home-footer d-flex justify-content-center">
+            <div>
+                <a href="#" class="mx-3">About</a>
+                <a href="#" class="mx-3">Settings</a>
+                <a href="#" class="mx-3">Blog</a>
+                <a href="#" class="mx-3">Help Center</a>
+                <a href="#" class="mx-3">Brand</a>
+            </div>
+        </footer>
+        {% endblock %}
+    </div>
+
+        {% include 'scripts.html' %}
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load static %}
+<div class="tweets">
+    {% for t in tweets %}
+        <div class="tweet p-3 row">
+            <div class="col-md-2 col-sm-12">
+                <div class="avatar">
+                {% if t.user.profile.avatar %}
+                    <img src="{{ t.user.profile.avatar.url }}" height="80px" width="100%">
+                {% else %}
+                    <img src="{% static 'Images/default_avatar.png' %}" height="60px" width="100%">
+                {% endif %}
+                </div>
+            </div>
+            <div class="userAndTweet col-md-10 col-sm-12">
+                    <a href="{{ t.user.profile.get_absolute_url }}" class="mr-1 mt-1">
+                        <strong>{{ t.user.get_full_name|default:t.user }}</strong>
+                    </a>
+                    {% if t.user.profile.verified %}
+                        <i class="fas fa-check-circle mr-2"></i>
+                    {% endif %}
+                    <a href="{{ t.user.profile.get_absolute_url }}" class="handler mr-2 mt-1">@{{ t.user }}</a>
+                    <p>{{ t.text }}</p>
+                    {% if t.image %}
+                        <img src="{{ t.image.url }}" class="mt-3" width="300">
+                    {% endif %}
+            </div>
+            <div class="actions offset-2 col-10">
+                <div class="row">
+                    <a href="#" class="col-md-3 col"><i class="far fa-comments fa-fw"></i></a>
+                    <a href="#" class="col-md-3 col"><i class="fas fa-retweet fa-fw"></i></a>
+                    <form method="POST" class="likeForm col-md-3 col" data-tweet-id="{{ t.id }}">
+                        {% csrf_token %}
+                            <button type="submit" class="btn btn-link py-0 {% if request.user.id in t.users_liked %}liked{% endif %}">
+                                {% if t.likes > 0 %}
+                                    <i class="fas fa-heart fa-fw mr-1"></i>{{ t.likes }}
+                                {% else %}
+                                    <i class="far fa-heart fa-fw"></i>
+                                {% endif %}
+                            </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
