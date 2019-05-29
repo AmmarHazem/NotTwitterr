@@ -26,10 +26,11 @@ class Login(View):
                 user.profile.last_login = timezone.now()
                 user.save()
                 login(request, user)
-                next = request.GET.get('next')
-                if next:
-                    return redirect(next)
+                next_url = request.GET.get('next')
+                if next_url:
+                    return redirect(next_url)
                 return redirect('home')
+        print(form.errors)
         return render(request, 'accounts/login.html', {'form' : form})
 
 

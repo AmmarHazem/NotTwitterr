@@ -164,6 +164,7 @@ $(document).ready(function(){
     }
 
 
+    // like form submit
     $('.likeForm').on('submit', function(event){
         event.preventDefault();
 
@@ -172,20 +173,20 @@ $(document).ready(function(){
         var endPoint = '/tweet/like/';
         var tweetId = $this.attr('data-tweet-id');
         data = {'tweetId' : tweetId};
+        socket.send(JSON.stringify(data));
+        // $.ajax({
+        //     url : endPoint,
+        //     method : method,
+        //     data : data,
 
-        $.ajax({
-            url : endPoint,
-            method : method,
-            data : data,
-
-            success : function(response){
-                console.log(response);
-                likeSuccess($this, response);
-            },
-            error : function(error){
-                console.log(error);
-            }
-        });
+        //     success : function(response){
+        //         console.log(response);
+        //         likeSuccess($this, response);
+        //     },
+        //     error : function(error){
+        //         console.log(error);
+        //     }
+        // });
     });
 
 
@@ -193,29 +194,29 @@ $(document).ready(function(){
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     // file input
-    var inputs = $('.inputfile');
-    Array.prototype.forEach.call(inputs, function(input)
-    {
-        var label = input.nextElementSibling,
-            labelVal = label.innerHTML;
+    // var inputs = $('.inputfile');
+    // Array.prototype.forEach.call(inputs, function(input)
+    // {
+    //     var label = input.nextElementSibling,
+    //         labelVal = label.innerHTML;
 
-        input.addEventListener('change', function(e)
-        {
-            var fileName = '';
-            if(this.files && this.files.length > 1)
-                fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
-            else
-                fileName = e.target.value.split('\\').pop();
+    //     input.addEventListener('change', function(e)
+    //     {
+    //         var fileName = '';
+    //         if(this.files && this.files.length > 1)
+    //             fileName = (this.getAttribute('data-multiple-caption') || '').replace('{count}', this.files.length);
+    //         else
+    //             fileName = e.target.value.split('\\').pop();
 
-            if( fileName )
-                label.querySelector('span').innerHTML = fileName;
-            else
-                label.innerHTML = labelVal;
-        });
-    });
+    //         if( fileName )
+    //             label.querySelector('span').innerHTML = fileName;
+    //         else
+    //             label.innerHTML = labelVal;
+    //     });
+    // });
 
 
-    input.addEventListener('focus', function(){ input.classList.add('has-focus');});
-    input.addEventListener('blur', function(){ input.classList.remove('has-focus');});
+    // input.addEventListener('focus', function(){ input.classList.add('has-focus');});
+    // input.addEventListener('blur', function(){ input.classList.remove('has-focus');});
 
 });

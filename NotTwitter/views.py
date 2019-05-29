@@ -6,6 +6,7 @@ from random import shuffle
 
 from tweets.forms import TweetForm
 from profiles.models import Profile
+from notifications.models import LikeNotification
 
 
 class Home(View):
@@ -13,6 +14,7 @@ class Home(View):
         tweets = None
         tweet_form = None
         profiles_qs = None
+        cxt = {}
         if request.user.is_authenticated():
             tweets = request.user.profile.get_timeline()
             tweet_form = TweetForm()
@@ -21,7 +23,16 @@ class Home(View):
             shuffle(ids)
             ids = ids[:3]
             profiles_qs = Profile.objects.filter(id__in = ids)
-        return render(request, 'base.html', {'tweets' : tweets, 'tweet_form' : tweet_form, 'who_to_follow' : profiles_qs})
+            cxt = {
+                'tweets' : tweets,
+                'tweet_form' : tweet_form,
+                'who_to_follow' : profiles_qs,
+                'notifications' : self.get_notifications()
+            }
+        return render(request, 'base.html', cxt)
+
+    def get_notifications(self):
+        return LikeNotification.objects.filter(destination = self.request.user)
 
 
 class Search(View):

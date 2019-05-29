@@ -264,11 +264,11 @@
     padding: 0px 8px;
 }
 
-.dropdown-menu
+/* .dropdown-menu
 {
     top: 130%;
     left: -100px;
-}
+} */
 
 .dropdown-item:focus, .dropdown-item:hover
 {
