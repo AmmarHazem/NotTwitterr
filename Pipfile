@@ -36,6 +36,7 @@ wrapt = "==1.10.11"
 Django = "==1.11"
 Pillow = "==5.1.0"
 PyJWT = "==1.6.4"
+channels = "*"
 
 [requires]
 python_version = "3.6"
