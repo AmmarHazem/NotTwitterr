@@ -30,8 +30,8 @@ class Login(View):
                 if next_url:
                     return redirect(next_url)
                 return redirect('home')
-        print(form.errors)
-        return render(request, 'accounts/login.html', {'form' : form})
+        errors = ['You user name or password didn\'t match. Please try again.']
+        return render(request, 'accounts/login.html', {'form' : form, 'errors' : errors})
 
 
 class SignUp(View):

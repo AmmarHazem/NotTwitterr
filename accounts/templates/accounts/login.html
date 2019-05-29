@@ -39,9 +39,15 @@
                 <h1>Login to NotTwitter</h1>
                 <form method="POST">
                     {% csrf_token %}
+                    {% for e in errors %}
+                        <p class="text-danger mb-0">
+                            {{ e }}
+                        </p>
+                    {% empty %}
+                    {% endfor %}
                     {% for f in form %}
                         <div class="form-group">
-                            {% if f.errors %}{{ f.errors }}{% endif %}
+                            {{ f.errors }}
                             {{ f }}
                         </div>
                     {% endfor %}
